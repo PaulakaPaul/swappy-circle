@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - circleentrances
+  - circlesolid
+  - blueCube
+  - greenCube
+  - redCube
+  - blueStar
+  - greenStar
+  - redStar
+  - blueDiamond
+  - greenDiamond
+  - redDiamond
+  - coin
+  - formSpawner
+  - circle
+  - circleController
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - 
+  - Water
+  - UI
+  - 
+  - 
+  - checkers
+  - circle
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: background
+    uniqueID: 902274815
+    locked: 0
+  - name: middleground
+    uniqueID: 2585001375
+    locked: 0
+  - name: foreground
+    uniqueID: 1722546997
+    locked: 0
