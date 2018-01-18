@@ -25,7 +25,7 @@ public class CircleController : MonoBehaviour {
 
 	void Awake() {
 
-		currentCircle = circleModels[currentCirleIndex];
+		currentCircle = circleModels[currentCirleIndex]; //array with all the circle models
 
 	}
 
@@ -51,7 +51,7 @@ public class CircleController : MonoBehaviour {
 	void Update () {
 
 		if (timer <= 0) {
-			this.setGameOverTrue ();
+			gameOver = true;
 		}
 
 		if (gameOver) {
@@ -72,10 +72,10 @@ public class CircleController : MonoBehaviour {
 			if( Input.touchCount > 0 && Input.GetTouch(0).phase == TouchPhase.Began) {
 		
 				if( Input.GetTouch(0).position.x < screenWidthReference ) {
-					currentCircle.transform.Rotate(new Vector3(0, 0, -60));
+					currentCircle.transform.Rotate(new Vector3(0, 0, 60));
 					currentMiddleState++;
 			} else if ( Input.GetTouch(0).position.x > screenWidthReference) {
-					currentCircle.transform.Rotate(new Vector3(0, 0, 60));
+					currentCircle.transform.Rotate(new Vector3(0, 0, -60));
 					currentMiddleState--;
 			}
 		
@@ -100,10 +100,10 @@ public class CircleController : MonoBehaviour {
 
 			if (gameStart && !gameOver) {
 				if (Input.GetKeyDown (KeyCode.RightArrow)) {
-					currentCircle.transform.Rotate (new Vector3 (0, 0, 60));
+					currentCircle.transform.Rotate (new Vector3 (0, 0, -60));
 					currentMiddleState++;
 				} else if (Input.GetKeyDown (KeyCode.LeftArrow)) {
-					currentCircle.transform.Rotate (new Vector3 (0, 0, -60));
+					currentCircle.transform.Rotate (new Vector3 (0, 0, 60));
 					currentMiddleState--;
 				}
 

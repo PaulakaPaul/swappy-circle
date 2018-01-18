@@ -6,9 +6,9 @@ using UnityEngine.SceneManagement;
 public class GameManager : MonoBehaviour {
 
 	public static GameManager instance;
-	public static string playScene = "level1";
-	public static string menuScene = "menu";
-	public static string levelsScene = "levels";
+	public static readonly string playScene = "level1";
+	public static readonly string menuScene = "menu";
+	public static readonly string levelsScene = "levels";
 
 	private bool gameStartedFromMenu = false ;
 	private bool gameReplayed = false;
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour {
 		} else {
 			Destroy (gameObject);
 		}
+
 
 
 	}
@@ -53,23 +54,13 @@ public class GameManager : MonoBehaviour {
 				CircleController.setTimer (timer);
 			} else if(gameReplayed) {
 
-				// activate transparent hearts if you have less than 3 lifes
-				switch (lifes) {
-					case 1:
-					UIManager.instance.getAnimht2 ().SetBool ("minusLife", true);
-					goto case 2;
-					case 2 : 
-					UIManager.instance.getAnimht1 ().SetBool ("minusLife", true);
-					break;
-				}
-
 
 				CircleController.setTimer (timer);
 				ScoreManager.instance.takeDataFromGameManager (score, lifes);
 
 			}
 
-			// we send all the data to other classes during the game so it they can process the data
+			// we send all the data to other classes during the game so  they will process the data
 
 		}
 	}
@@ -89,6 +80,18 @@ public class GameManager : MonoBehaviour {
 			this.lifes = lifes;
 
 			this.timer = CircleController.getTimer ();
+
+
+			// activate transparent hearts if you have less than 3 lifes
+			switch (lifes) {
+			case 1:
+				UIManager.instance.getAnimht2 ().SetBool ("minusLife", true);
+				goto case 2;
+			case 2 : 
+				UIManager.instance.getAnimht1 ().SetBool ("minusLife", true);
+				break;
+			}
+
 
 			// Reload GAME
 			UIManager.instance.replayWithAnotherLife();
@@ -144,7 +147,8 @@ public class GameManager : MonoBehaviour {
 			gameReplayed = false;
 	}
 
-
-
+	public int getLifes() {
+		return lifes;
+	}
 
 }

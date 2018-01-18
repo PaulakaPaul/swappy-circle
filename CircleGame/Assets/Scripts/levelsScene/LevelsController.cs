@@ -22,7 +22,7 @@ public class LevelsController : MonoBehaviour {
 	}
 
 	public void backMenu() {
-		SceneManager.LoadScene (GameManager.menuScene);
+		SceneFader.instance.fadeIn(GameManager.menuScene);
 	}
 
 

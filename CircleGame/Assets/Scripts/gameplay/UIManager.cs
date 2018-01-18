@@ -17,8 +17,10 @@ public class UIManager : MonoBehaviour {
 	[SerializeField]
 	private GameObject twoTimesCombo, threeTimesCombo;
 
+
 	[SerializeField]
 	private GameObject heart1, heart2;
+
 
 	private Animator animht1, animht2; 
 
@@ -43,17 +45,32 @@ public class UIManager : MonoBehaviour {
 
 		animht1 = heart1.GetComponent<Animator> ();
 		animht2 = heart2.GetComponent<Animator> ();
+
+		// activate transparent hearts if you have less than 3 lifes
+		switch (GameManager.instance.getLifes()) {
+
+		case 1:
+			//heart2.GetComponent<Image> ().SetTransparency (0f);
+			heart2.SetActive(false);
+			goto case 2;
+		case 2: 
+			//heart1.GetComponent<Image> ().SetTransparency (0f);
+			heart1.SetActive(false);
+			break;
+		}
 	}
+
 
 
 	// Use this for initialization
 	void Start () {
+
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-
+		heart1.GetComponent<Image> ().SetTransparency (0.5f);
 
 		if (!circleControllerReference.getGameOverState ()) {
 			

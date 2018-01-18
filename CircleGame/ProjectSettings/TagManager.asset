@@ -19,6 +19,7 @@ TagManager:
   - formSpawner
   - circle
   - circleController
+  - heart1
   layers:
   - Default
   - TransparentFX
