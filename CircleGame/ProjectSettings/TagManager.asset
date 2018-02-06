@@ -19,7 +19,22 @@ TagManager:
   - formSpawner
   - circle
   - circleController
+  - gameManager
   - heart1
+  - musicButton
+  - blueUnifiedDrop
+  - greenUnifiedDrop
+  - redUnifiedDrop
+  - blueRainDrop
+  - greenRainDrop
+  - redRainDrop
+  - blueTimeDrop
+  - greenTimeDrop
+  - redTimeDrop
+  - dropTimeSlider
+  - dropUnifiedSlider
+  - dropRainSlider
+  - uimanager
   layers:
   - Default
   - TransparentFX

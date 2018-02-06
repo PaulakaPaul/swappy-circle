@@ -9,6 +9,9 @@ public class ScoreManager : MonoBehaviour {
 	private int score;
 	private int lifes;
 
+	public const int TWO_TIMES_COMBO_LIMIT = 4;
+	public const int THREE_TIMES_COMBO_LIMIT = 8;
+
 	private ScoreManager() {}
 
 
@@ -16,8 +19,7 @@ public class ScoreManager : MonoBehaviour {
 
 		if (instance == null) {
 			instance = this;
-		} 
-			
+		} 	
 	}
 
 	// Use this for initialization
@@ -30,32 +32,51 @@ public class ScoreManager : MonoBehaviour {
 		
 	}
 
+	void OnDisable() {
+		gameOverScoreManager (); // save the high score when the scene it's left or we start the game with a life less
+	}
+
 	private void counterChecker(int comboCounter,int formAmount) {
-		if (comboCounter < 4) {
+
+		if (GameManager.instance.getDoubleScoreState ())
+			formAmount *= 2; // it means that we have the double coins buff activated
+
+		if (comboCounter < TWO_TIMES_COMBO_LIMIT) {
 			score += formAmount;
-		} else if (comboCounter < 8) {
+		} else if (comboCounter < THREE_TIMES_COMBO_LIMIT) {
 			score += formAmount * 2;
 		} else {
 			score += formAmount * 3;
 		}
+
+		//  show the combo gui if needed
+		GameObject.FindGameObjectWithTag ("uimanager").GetComponent<UIManager> ().InstantiateComboUI ();
 	}
 
 	public void incrementCube() {
 		CircleController.incrementComboCounter ();
-		counterChecker (CircleController.getComboCounter(), 1); // gets the comboCounter data from the Blue/Red/Green checkers 
+		counterChecker (CircleController.getComboCounter(), 3); // gets the comboCounter data from the Blue/Red/Green checkers 
 	}
 
 	public void incrementStar() {
 		CircleController.incrementComboCounter ();
-		counterChecker (CircleController.getComboCounter(), 3); // gets the comboCounter data from the Blue/Red/Green checkers 
+		counterChecker (CircleController.getComboCounter(), 5); // gets the comboCounter data from the Blue/Red/Green checkers 
 	}
 
 	public void incrementDiamond() {
 		CircleController.incrementComboCounter ();
-		counterChecker (CircleController.getComboCounter(), 5); // gets the comboCounter data from the Blue/Red/Green checkers 
+		counterChecker (CircleController.getComboCounter(), 8); // gets the comboCounter data from the Blue/Red/Green checkers 
 	}
 
 	public void incrementCoins() {
+
+		incrementCoinsLevelLogic ();
+
+		if(GameManager.instance.getDoubleCoinState()) // it means we have the double coin buff activated -> we repeat the coin increment logic
+			incrementCoinsLevelLogic(); 
+	}
+
+	private void incrementCoinsLevelLogic() {
 		if (GamePreferences.GetEasyDifficultyState () == 1) {
 			GamePreferences.SetCoinScore(GamePreferences.GetCoinScore() + 1);
 		} else if (GamePreferences.GetMediumDifficultyState () == 1) {
@@ -63,8 +84,6 @@ public class ScoreManager : MonoBehaviour {
 		} else if (GamePreferences.GetHardDifficultyState () == 1) {
 			GamePreferences.SetCoinScore(GamePreferences.GetCoinScore() + 3);
 		}
-
-		Debug.Log ("coins: " + GamePreferences.GetCoinScore ());
 	}
 
 	public void decrementLife() {
