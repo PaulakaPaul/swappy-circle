@@ -1,4 +1,5 @@
 ﻿using System.Collections;
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -9,7 +10,9 @@ public class LevelsController : MonoBehaviour {
 	[SerializeField]
 	private GameObject EasySign, MediumSign, HardSign;
 	[SerializeField]
-	private Text highScore;
+	private Text highScore, coinDetailText;
+
+	private readonly string coinDetailTextFormat = "x{0} coin drop";
 
 	// Use this for initialization
 	void Start () {
@@ -22,23 +25,17 @@ public class LevelsController : MonoBehaviour {
 	}
 
 	public void backMenu() {
-		SceneManager.LoadScene (GameManager.menuScene);
+		SceneFader.instance.fadeIn(GameManager.menuScene);
 	}
 
 
 	private void InitializeOptionsScene() {
 		if (GamePreferences.GetEasyDifficultyState () == 1) {
-			MediumSign.SetActive (false);
-			HardSign.SetActive (false);
-			highScore.text = GamePreferences.GetEasyDifficultyHighscore ().ToString();
+			setCorrectCheckSignAndState ("easy");
 		} else if (GamePreferences.GetMediumDifficultyState () == 1) {
-			EasySign.SetActive (false);
-			HardSign.SetActive (false);
-			highScore.text = GamePreferences.GetMediumDifficultyHighscore ().ToString();
+			setCorrectCheckSignAndState ("medium");
 		} else if (GamePreferences.GetHardDifficultyState () == 1) {
-			EasySign.SetActive (false);
-			MediumSign.SetActive (false);
-			highScore.text = GamePreferences.GetHardDifficultyHighscore ().ToString();
+			setCorrectCheckSignAndState ("hard");
 		}
 	}
 
@@ -48,6 +45,8 @@ public class LevelsController : MonoBehaviour {
 			EasySign.SetActive (true);
 			MediumSign.SetActive (false);
 			HardSign.SetActive (false);
+
+			coinDetailText.text = String.Format (coinDetailTextFormat, 1);
 
 			GamePreferences.SetEasyDifficultyState (1);
 			GamePreferences.SetMediumDifficultyState (0);
@@ -60,6 +59,8 @@ public class LevelsController : MonoBehaviour {
 			MediumSign.SetActive (true);
 			HardSign.SetActive (false);
 
+			coinDetailText.text = String.Format (coinDetailTextFormat, 2);
+
 			GamePreferences.SetEasyDifficultyState (0);
 			GamePreferences.SetMediumDifficultyState (1);
 			GamePreferences.SetHardDifficultyState (0);
@@ -70,6 +71,8 @@ public class LevelsController : MonoBehaviour {
 			EasySign.SetActive (false);
 			MediumSign.SetActive (false);
 			HardSign.SetActive (true);
+
+			coinDetailText.text = String.Format (coinDetailTextFormat, 3);
 
 			GamePreferences.SetEasyDifficultyState (0);
 			GamePreferences.SetMediumDifficultyState (0);

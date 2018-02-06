@@ -8,7 +8,6 @@ public class menuUIManager : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		
 	}
 	
 	// Update is called once per frame
@@ -17,18 +16,28 @@ public class menuUIManager : MonoBehaviour {
 	}
 
 	public void play() {
-		GameManager.instance.SetGameStartedFromMenuTrue ();
-		//SceneManager.LoadScene (GameManager.playScene);
-		SceneFader.instance.fadeIn(GameManager.playScene);
+
+		if (SettingsController.instance.getSettingsPanelState ()) { // go to another scene only of the settings panel is closed
+			GameManager.instance.SetGameStartedFromMenuTrue ();
+			//SceneManager.LoadScene (GameManager.playScene);
+			SceneFader.instance.fadeIn (GameManager.playScene);
+		}
 	}
 
 	public void exit() {
-		Application.Quit ();
+		if (SettingsController.instance.getSettingsPanelState ())  // go to another scene only of the settings panel is closed
+			Application.Quit ();
 	}
 
 	public void levels() {
-		//SceneManager.LoadScene (GameManager.levelsScene);
-		SceneFader.instance.fadeIn(GameManager.levelsScene);
+		if (SettingsController.instance.getSettingsPanelState ()) // go to another scene only of the settings panel is closed
+			//SceneManager.LoadScene (GameManager.levelsScene);
+			SceneFader.instance.fadeIn(GameManager.levelsScene);
+	}
+
+	public void shop() {
+		if (SettingsController.instance.getSettingsPanelState ()) // go to another scene only of the settings panel is closed
+			SceneFader.instance.fadeIn (GameManager.shopScene);
 	}
 		
 }
