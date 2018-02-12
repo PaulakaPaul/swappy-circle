@@ -19,6 +19,8 @@ public static class GamePreferences {
 
 	public static string CoinScore = "CoinScore";
 
+	public const string AdsCounter = "AdsCounter";
+	public const int AD_NUMBER_SHOW = 2; //TODO change to 3
 	public static string MusicVolume = "MusicVolume";
 	public const string LastMusicVolume = "LastMusicVolume"; // we use this to restore the music when we use the on off button from the gameplay
 	public const string ShowTrail = "ShowTrail";
@@ -95,7 +97,7 @@ public static class GamePreferences {
 	public static void SetCoinScore(int score) {
 		PlayerPrefs.SetInt (GamePreferences.CoinScore, score);
 	}
-		
+
 	public static int GetCoinScore() {
 		return PlayerPrefs.GetInt (GamePreferences.CoinScore);
 	}
@@ -125,4 +127,30 @@ public static class GamePreferences {
 	public static int GetTrailState() {
 		return PlayerPrefs.GetInt (GamePreferences.ShowTrail);
 	}
+
+	public static void IncrementAdsCounter() { // the counter it's incremented at every new game
+		PlayerPrefs.SetInt (GamePreferences.AdsCounter, PlayerPrefs.GetInt (GamePreferences.AdsCounter) + 1);
+	}
+
+	public static bool ShouldShowAd() {
+		if (GamePreferences.AD_NUMBER_SHOW  <= PlayerPrefs.GetInt (GamePreferences.AdsCounter)) // every ADD_NUMBER_SHOW times or more show the add
+			return true;
+
+		return false;
+	}
+
+	public static void DecrementAdsCounter() { // the counter it's decremented after we show an ad by GamePreferences.AD_NUMBER_SHOW, cuz if someone playes 10 games one after another
+		// without going back to the menu the player will skip 10/GamePreferences.AD_NUMBER_SHOW number of ads. In this way that won't happen.
+		int newAdsCounter = PlayerPrefs.GetInt (GamePreferences.AdsCounter) - GamePreferences.AD_NUMBER_SHOW;
+
+		if (newAdsCounter < 0)
+			PlayerPrefs.SetInt (GamePreferences.AdsCounter, 0);
+		else
+			PlayerPrefs.SetInt (GamePreferences.AdsCounter, newAdsCounter);
+	}
+
+	public static void InitializeAdsCounter() {
+		PlayerPrefs.SetInt (GamePreferences.AdsCounter, 0);
+	}
+
 }
