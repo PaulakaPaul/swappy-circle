@@ -151,3 +151,4 @@ dabb798da9b360ebd665e48d01a7cce6 Assembly-CSharp.dll:.LevelsController
 315d6efc5fd2f25d47706d493cda3884 Assembly-CSharp.dll:.CoinUpdater
 effa7f895eb723a49191c755f5093b91 Assembly-CSharp.dll:.CircleController
 52da9e65761f338448781a642b5278c1 Assembly-CSharp.dll:.GameManager
+b968f86a2bde24c07efbd293163866e4 Assembly-CSharp.dll:.AdManager

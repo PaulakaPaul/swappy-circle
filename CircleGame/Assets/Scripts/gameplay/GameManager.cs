@@ -58,7 +58,7 @@ public class GameManager : MonoBehaviour {
 
 
 	private void MySceneLoaderChecker (Scene scene, LoadSceneMode mode) {
-		
+
 		if (scene.name.Equals(playScene)) { // if we load the play scene
 			if (gameStartedFromMenu) {
 				//setting data for the start of the game
@@ -66,8 +66,7 @@ public class GameManager : MonoBehaviour {
 				lifes = 3;
 				timer = 120f;
 
-				//making the view
-			//	UIManager.instance.resetLifes();
+				GamePreferences.IncrementAdsCounter (); // everytime we start a new game the ads counter it's incremented by one
 
 				//seding data to game controllers
 				ScoreManager.instance.takeDataFromGameManager (score, lifes);
@@ -80,12 +79,17 @@ public class GameManager : MonoBehaviour {
 				// sending data to game controllers
 				CircleController.setTimer (timer);
 				ScoreManager.instance.takeDataFromGameManager (score, lifes);
-
 			}
+			// we send all the data to other classes during the game so they will process the data and it will not be lost
 
-			// we send all the data to other classes during the game so  they will process the data
+		} else if (scene.name.Equals(menuScene)) {
+
+			if(GamePreferences.ShouldShowAd()) // it  verifies if we reached GamePreferences.ADD_NUMBER_SHOW to show ad
+				AdManager.instance.ShowUIAd ();
 		}
 
+
+		AdManager.instance.RequestAllAds (); // request ads everytime we load a new scene 
 	}
 
 
@@ -95,7 +99,7 @@ public class GameManager : MonoBehaviour {
 			// the gameOver() function it is called from the circleController if this variable it's true
 			GameObject.FindWithTag ("circleController").GetComponent<CircleController> ().setGameOverTrue ();
 		} else if (ScoreManager.instance.getLifes() > 0) {
-			
+
 			gameStartedFromMenu = false;			
 			gameReplayed = true;
 
@@ -121,7 +125,7 @@ public class GameManager : MonoBehaviour {
 
 			// we take all the data from the other classes when the game is over or it will be restarted so it can be perpetuated to a new life change in the game
 		}
-	
+
 
 	}
 
@@ -129,7 +133,7 @@ public class GameManager : MonoBehaviour {
 	void Start () {
 		InitializeVariables ();
 	}
-		
+
 
 
 	private void InitializeVariables() {
@@ -153,17 +157,19 @@ public class GameManager : MonoBehaviour {
 
 			GamePreferences.SetTrailState (1); // we show the first time the trail
 
+			GamePreferences.InitializeAdsCounter (); // put the counter on 0
+
 			PlayerPrefs.SetInt ("Game Initialized!", 1); // game is initialized
 		}
 	}
-	
+
 	// Update is called once per frame
 	void Update () {
-		
+
 	}
 
 	public void gameStarts() {
-		
+
 	}
 
 	public void gameOver() {
@@ -173,8 +179,8 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void SetGameStartedFromMenuTrue() {
-			gameStartedFromMenu = true;
-			gameReplayed = false;
+		gameStartedFromMenu = true;
+		gameReplayed = false;
 	}
 
 	public int getLifes() {
