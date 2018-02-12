@@ -44,7 +44,6 @@ public class GameManager : MonoBehaviour {
 		} else {
 			Destroy (gameObject);
 		}
-			
 	}
 
 
@@ -67,8 +66,9 @@ public class GameManager : MonoBehaviour {
 				lifes = 3;
 				timer = 120f;
 
-				GamePreferences.IncrementAdsCounter (); // everytime we start a new game the ads counter it's incremented by one
-					
+				//making the view
+			//	UIManager.instance.resetLifes();
+
 				//seding data to game controllers
 				ScoreManager.instance.takeDataFromGameManager (score, lifes);
 				CircleController.setTimer (timer);
@@ -80,17 +80,12 @@ public class GameManager : MonoBehaviour {
 				// sending data to game controllers
 				CircleController.setTimer (timer);
 				ScoreManager.instance.takeDataFromGameManager (score, lifes);
-			}
-			// we send all the data to other classes during the game so they will process the data and it will not be lost
-		
-		} else if (scene.name.Equals(menuScene)) {
-			Debug.Log ("MENU");
-			if(GamePreferences.ShouldShowAd()) // it  verifies if we reached GamePreferences.ADD_NUMBER_SHOW to show ad
-				AdManager.instance.ShowUIAd ();
-		}
-			
 
-		AdManager.instance.RequestAllAds (); // request ads everytime we load a new scene 
+			}
+
+			// we send all the data to other classes during the game so  they will process the data
+		}
+
 	}
 
 
@@ -157,8 +152,6 @@ public class GameManager : MonoBehaviour {
 			GamePreferences.SetDropIndex (0);
 
 			GamePreferences.SetTrailState (1); // we show the first time the trail
-
-			GamePreferences.InitializeAdsCounter (); // put the counter on 0
 
 			PlayerPrefs.SetInt ("Game Initialized!", 1); // game is initialized
 		}
