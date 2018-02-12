@@ -19,7 +19,6 @@ public class UIManager : MonoBehaviour {
 	[SerializeField]
 	private GameObject dropSliderTime, dropSliderRain, dropSliderUnified;
 
-
 	[SerializeField]
 	private GameObject heart1, heart2;
 	[SerializeField]
@@ -74,7 +73,7 @@ public class UIManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 
-		if (GamePreferences.GetTrailState () == 1 && !GameManager.instance.getReplayStatus() && !AdManager.instance.AdOpened) // we need this to know when the trail animation and logic it's finished (maybe the user wants to see the trail
+		if (GamePreferences.GetTrailState () == 1 && !GameManager.instance.getReplayStatus()) // we need this to know when the trail animation and logic it's finished (maybe the user wants to see the trail
 			// next time so we need an extra variable) -> this var will always be false after the buttons at the end of the anim are pressed ( we show it if the trail state it's true and the game it's not  
 			// replayed with another life
 			showTrailStarted = true;
@@ -311,7 +310,7 @@ public class UIManager : MonoBehaviour {
 		showDataButton.transform.Find ("DataPanel").gameObject.SetActive (false);
 		Time.timeScale = 1f; // set time to default
 	}
-		
+
 	public GameObject getDropTimeSlider() {
 		return dropSliderTime;
 	}
