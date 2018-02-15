@@ -8,9 +8,8 @@ public class SettingsController : MonoBehaviour {
 
 	public static SettingsController instance;
 
-	//TODO update the description
 	public const string MUSIC_BUTTON_NAME = "MusicButton", DETAIL_BUTTON_NAME = "DetailsButton", TRAIL_BUTTON_NAME = "TrailButton";
-	public const string detailsText = "Main rules: \n - CATCH ( the forms)\n - ROTATE (the circle)\n - SURVIVE ( lifes and heart)\n\nScore:\n - cubes : 3 points\n - stars : 5 points\n - diamonds : 8 points\n\nCombos (catching multiple forms without \nmaking a mistake):\n - x2  from 5 to 8 elements\n - x3 from 9 to how make you can handle it\n\n  You can also personalize your game as you want \nfrom the shop with new circles, drops and buffs.\n\n   Hope that this description helped you !\n   For more information or bug reports please mail\nme anytime at p.e.iusztin.gmail@gmail.com.";
+	public const string detailsText = "Main rules: \n     - CATCH ( the forms)\n     - ROTATE (the circle)\n     - SURVIVE ( lifes and heart)\n\n Score: \n    - cubes : 3 points\n    - stars : 5 points\n    - diamonds : 8 points\n\nNormal drops:\n    -the ones from above\nSpecial drops:\n    -time drop: +5 time and makes slows the drops while\nit's active\n    -unified drop: you can catch the normal drops on all\nthe colors while it's active\n    -rain drop: a rain of drops, you can't loose while this it's active \n     Special drops does not give extra score ! They can\nonly help you make combos for extra score !\n\n    Combos (catching multiple forms without \\nmaking a mistake):\n    - x2  from 5 to 8 elements\n    - x3 from 9 to how make you can handle it\n\n    You can also personalize your game as you want from the shop with new circles, drops and buffs.   \n\n    Hope that this description helped you ! \n    For more information or bugs please mail me anytime at p.e.iusztin.gmail@gmail.com.";
 
 	[SerializeField]
 	private GameObject trailObject, musicObject, detailsObject, mainPanel, buttonsAndTitle;
@@ -27,6 +26,8 @@ public class SettingsController : MonoBehaviour {
 	private bool backButtonListnerAdded; // to add the listener only once
 	private bool exitMainPanel; // we use the same back button to exit from the main panel or to go back to the buttons
 	private bool isSettingsMenuClosed;
+
+	public bool IsSettingsMenuClosed { get { return isSettingsMenuClosed; } }
 
 	void Awake() {
 
@@ -72,9 +73,11 @@ public class SettingsController : MonoBehaviour {
 
 	//for the settings button
 	public void settingsButtonListener() {
+		if(!AdManager.instance.AdOpened) { // continue if no ads are opened
 		mainPanel.SetActive (true);
 		isSettingsMenuClosed = false;
 		Time.timeScale = 0f; // pausing the game when you want to use the settings
+		}
 	}
 
 

@@ -1,12 +1,12 @@
 fileFormatVersion: 2
-guid: 719f7f2b3d1d31d49a2865d11aba8684
-timeCreated: 1517002641
+guid: 814f8e746b2d4f341b4b7fc65283ffab
+timeCreated: 1518726660
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
-    21300000: lizzard_red
-    21300002: lizzard_green
-    21300004: lizzard_blue
+    21300000: lizzard_drop_0
+    21300002: lizzard_drop_1
+    21300004: lizzard_drop_2
   serializedVersion: 4
   mipmaps:
     mipMapMode: 0
@@ -74,8 +74,16 @@ TextureImporter:
     crunchedCompression: 0
     allowsAlphaSplitting: 0
     overridden: 0
+  - buildTarget: iPhone
+    maxTextureSize: 2048
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
   - buildTarget: Android
-    maxTextureSize: 256
+    maxTextureSize: 512
     textureFormat: 4
     textureCompression: 1
     compressionQuality: 50
@@ -86,13 +94,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: lizzard_red
+      name: lizzard_drop_0
       rect:
         serializedVersion: 2
-        x: 3
-        y: 3
-        width: 98
-        height: 113
+        x: 0
+        y: 0
+        width: 127
+        height: 147
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -100,13 +108,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: lizzard_green
+      name: lizzard_drop_1
       rect:
         serializedVersion: 2
-        x: 120
+        x: 158
         y: 4
-        width: 99
-        height: 114
+        width: 127
+        height: 147
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -114,13 +122,13 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
     - serializedVersion: 2
-      name: lizzard_blue
+      name: lizzard_drop_2
       rect:
         serializedVersion: 2
-        x: 244
+        x: 316
         y: 8
-        width: 100
-        height: 113
+        width: 126
+        height: 145
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

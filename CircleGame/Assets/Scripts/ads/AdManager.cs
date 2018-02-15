@@ -8,7 +8,7 @@ using GoogleMobileAds.Api;
 public class AdManager : MonoBehaviour {
 
 	[SerializeField]
-	private GameObject adsPanel, failedToLoadAdGameObject;
+	private GameObject adsPanel;
 
 	public static AdManager instance;
 
@@ -49,9 +49,8 @@ public class AdManager : MonoBehaviour {
 
 	private void RequestInterstitial() {
 
-		//TODO change adUnitId
 		#if UNITY_ANDROID
-		string adUnitId = "ca-app-pub-3940256099942544/1033173712";
+		string adUnitId = "ca-app-pub-5218899435308484/3648336676";
 		#elif UNITY_IPHONE
 		string adUnitId = "ca-app-pub-3940256099942544/4411468910";
 		#else
@@ -77,9 +76,8 @@ public class AdManager : MonoBehaviour {
 
 		private void RequestRewardedVideo() {
 
-		//TODO change adUnitId at RequestAd
 		#if UNITY_ANDROID
-		string adUnitId = "ca-app-pub-3940256099942544/5224354917";
+		string adUnitId = "ca-app-pub-5218899435308484/4409961414";
 		#elif UNITY_IPHONE
 		string adUnitId = "ca-app-pub-3940256099942544/1712485313";
 		#else
@@ -97,15 +95,15 @@ public class AdManager : MonoBehaviour {
 
 		public void RequestAllAds() {
 
-		if (interstitialAd != null) {
+		  if (interstitialAd != null) {
 			if (!interstitialAd.IsLoaded ()) { // load only if it isn't loaded
 				RequestInterstitial ();
 			}
 		}
 
 		if (rewardBasedAd != null && !rewardBasedAd.IsLoaded ()) { // load only if it isn't loaded
-			RequestRewardedVideo ();
-		}
+		RequestRewardedVideo ();
+		  }
 
 		}
 
@@ -136,18 +134,20 @@ public class AdManager : MonoBehaviour {
 		adOpened = true;
 		float rnd = UnityEngine.Random.Range (0, 100);
 
-		if (rnd < 50) // show rewardAd Panel
+		if (rnd < 70) // show rewardAd Panel
 		adsPanel.SetActive (true);
 		else // show interstitial Ad
 		ShowInterstitial ();
 		}
 
 		public void YesButtonShowUIAd() {
+		adOpened = false;
 		ShowRewardAd();
 		adsPanel.SetActive (false);
 		}
 
 		public void NoButtonShowUIAd() {
+		adOpened = false;
 		adsPanel.SetActive (false);
 		}
 
@@ -161,14 +161,10 @@ public class AdManager : MonoBehaviour {
 		}
 
 		private void HandleOnAdFailedToLoad(object sender, AdFailedToLoadEventArgs args) {
-		//TODO after the ads will work ad a logic here
+		adOpened = false; // in case the ad failed to load but the ad panel showed -> adOpened = true, we need to reset the var to false so we can press the buttons
 		Debug.Log ("FAILED");
 		}
 
-		private IEnumerator ShowFailedToLoadAdText() {
-		failedToLoadAdGameObject.SetActive (true);
-		yield return new WaitForSeconds (1f);
-		failedToLoadAdGameObject.SetActive (false);
-		} 
+
 
 		}

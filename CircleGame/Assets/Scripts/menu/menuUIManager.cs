@@ -17,7 +17,8 @@ public class menuUIManager : MonoBehaviour {
 
 	public void play() {
 
-		if (SettingsController.instance.getSettingsPanelState ()) { // go to another scene only of the settings panel is closed
+		if (SettingsController.instance.getSettingsPanelState ()
+			&& !AdManager.instance.AdOpened) { // go to another scene only of the settings panel is closed and no ads are opened
 			GameManager.instance.SetGameStartedFromMenuTrue ();
 			//SceneManager.LoadScene (GameManager.playScene);
 			SceneFader.instance.fadeIn (GameManager.playScene);
@@ -25,18 +26,20 @@ public class menuUIManager : MonoBehaviour {
 	}
 
 	public void exit() {
-		if (SettingsController.instance.getSettingsPanelState ())  // go to another scene only of the settings panel is closed
+		if (SettingsController.instance.getSettingsPanelState ()
+			&& !AdManager.instance.AdOpened)  // go to another scene only of the settings panel is closed and no ads are opened
 			Application.Quit ();
 	}
 
 	public void levels() {
-		if (SettingsController.instance.getSettingsPanelState ()) // go to another scene only of the settings panel is closed
-			//SceneManager.LoadScene (GameManager.levelsScene);
+			if (SettingsController.instance.getSettingsPanelState ()
+				&& !AdManager.instance.AdOpened)  // go to another scene only of the settings panel is closed and no ads are opened
 			SceneFader.instance.fadeIn(GameManager.levelsScene);
 	}
 
 	public void shop() {
-		if (SettingsController.instance.getSettingsPanelState ()) // go to another scene only of the settings panel is closed
+				if (SettingsController.instance.getSettingsPanelState ()
+					&& !AdManager.instance.AdOpened)  // go to another scene only of the settings panel is closed and no ads are opened
 			SceneFader.instance.fadeIn (GameManager.shopScene);
 	}
 		

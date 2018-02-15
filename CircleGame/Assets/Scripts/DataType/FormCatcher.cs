@@ -21,6 +21,7 @@ public class FormCatcher {
 	
 		GameObject spark = null; 
 		GameObject coinSparkReference = null;
+		bool caught = true; // var to play audioclip only when a form its caught, caught = false if the form it's incorrect
 
 		// increment score or do logic for every dropped object
 
@@ -96,6 +97,7 @@ public class FormCatcher {
 			} else { // we have 0 points -> different colour caught
 				// activate lose animation/code
 				CircleController.resetCounter ();
+				caught = false;
 
 				char colour = col.tag [0];
 				GameObject zero = null;
@@ -111,9 +113,10 @@ public class FormCatcher {
 
 
 
-		// play audio
-			AudioSource.PlayClipAtPoint (MusicController.instance.catchFormClip, Vector3.zero, 5f);
-			
+		// play audio when catch a form
+		if(caught)
+			AudioSource.PlayClipAtPoint (MusicController.instance.catchFormClip, Vector3.zero, MusicController.instance.VolumeAudioClips);
+
 		if (spark != null) {
 			Object.Destroy (spark, 1f);
 		}

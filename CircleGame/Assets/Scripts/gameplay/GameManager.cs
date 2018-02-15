@@ -17,6 +17,7 @@ public class GameManager : MonoBehaviour {
 	private int score, lifes;
 	private float timer;
 
+	public int Lifes { get { return lifes; } }
 
 	// items that have to be accesed in any moment of the gameplay
 	[SerializeField]
@@ -37,7 +38,6 @@ public class GameManager : MonoBehaviour {
 	private GameManager() {}
 
 	void Awake() {
-
 		if (instance == null) {
 			instance = this;
 			DontDestroyOnLoad (gameObject);
@@ -58,7 +58,6 @@ public class GameManager : MonoBehaviour {
 
 
 	private void MySceneLoaderChecker (Scene scene, LoadSceneMode mode) {
-
 		if (scene.name.Equals(playScene)) { // if we load the play scene
 			if (gameStartedFromMenu) {
 				//setting data for the start of the game
@@ -135,20 +134,19 @@ public class GameManager : MonoBehaviour {
 	}
 
 
-	// TODO change to 0 again
 	private void InitializeVariables() {
-		if (!PlayerPrefs.HasKey ("Game Initialized!")) {
+		if (!PlayerPrefs.HasKey ("Game Initialized!!!")) {
 			GamePreferences.SetEasyDifficultyState (1);
-			GamePreferences.SetEasyDifficultyHighScore (1500);
+			GamePreferences.SetEasyDifficultyHighScore (0);
 
 			GamePreferences.SetMediumDifficultyState (0);
-			GamePreferences.SetMediumDifficultyHighScore (1500);
+			GamePreferences.SetMediumDifficultyHighScore (0);
 
 
 			GamePreferences.SetHardDifficultyState (0);
-			GamePreferences.SetHardDifficultyHighScore (1500);
+			GamePreferences.SetHardDifficultyHighScore (0);
 
-			GamePreferences.SetCoinScore (100000);
+			GamePreferences.SetCoinScore (0);
 			GamePreferences.SetMusicState (0.5f);
 			GamePreferences.SetLastMusicState (0.5f); // we use this to go back to the last music state when we use the on/off button
 
@@ -159,7 +157,7 @@ public class GameManager : MonoBehaviour {
 
 			GamePreferences.InitializeAdsCounter (); // put the counter on 0
 
-			PlayerPrefs.SetInt ("Game Initialized!", 1); // game is initialized
+			PlayerPrefs.SetInt ("Game Initialized!!!", 1); // game is initialized
 		}
 	}
 

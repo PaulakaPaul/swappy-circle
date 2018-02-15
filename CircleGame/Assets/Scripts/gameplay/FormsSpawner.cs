@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class FormsSpawner : MonoBehaviour {
 
-	//TODO remake the lizzard drops -> colours not clear
+
 	public static FormsSpawner instance;
 
 	[SerializeField]
@@ -27,7 +27,7 @@ public class FormsSpawner : MonoBehaviour {
 	private int numberFormsSpawning; // number of forms spawn per ture 
 	private float elapseTime; // time beetween tures
 
-	//rain drops variable
+	//special drops variables
 	private readonly int rainDropRate = 10; // everything related to the drops(except gravity scale) happens 10 times faster
 	private bool isRainDropActivated; // we know when we caught a rainDrop
 	public bool IsRainDropActivated  { get { return isRainDropActivated; } }
@@ -38,7 +38,8 @@ public class FormsSpawner : MonoBehaviour {
 	private float rainDropFinalDurationScaledWhileTimeDropActivated; // we need another scaled duration when we loweer the gravity when we catch a time drop
 	public const float TIME_DROP_DURATION = 5f; // lower gravity scale duration
 	public const float LOWER_GRAVITY_SCALE_RATE = 0.15f; // this is the rate we lower the gravity scale when we catch a time drop
-	public const float EASY_GRAVITY_SCALE = 0.20f;
+	public const float EASY_GRAVITY_SCALE = 0.10f;
+	private float addToSmoothTheRainDropDuration;
 
 	private static readonly float destroyTime = 0.08f; // destroy time for the forms
 
@@ -87,7 +88,7 @@ public class FormsSpawner : MonoBehaviour {
 	}
 
 
-	//TODO twik the gravityScale
+
 	private void levelTimeSpawnSelect() {
 
 	
@@ -96,25 +97,27 @@ public class FormsSpawner : MonoBehaviour {
 			numberFormsSpawning = 3; // number of forms spawn per ture 
 			elapseTime = 0.60f; // time beetween tures
 			gravityScale = EASY_GRAVITY_SCALE; // how fast the drops are dropping...
+			addToSmoothTheRainDropDuration = 0f;
 
 		} else if (GamePreferences.GetMediumDifficultyState () == 1) {
 
 			waitStrikeTime = 0.75f; // time beetween spawing forms in a ture 
 			numberFormsSpawning = 4; // number of forms spawn per ture 
 			elapseTime = 0.55f; // time beetween tures
-			gravityScale = 0.25f; // how fast the drops are dropping...
+			gravityScale = 0.20f; // how fast the drops are dropping...
+			addToSmoothTheRainDropDuration = 1f;
 
-		
 		} else if (GamePreferences.GetHardDifficultyState () == 1) {
 
 			waitStrikeTime = 0.67f; // time beetween spawing forms in a ture 
 			numberFormsSpawning = 5; // number of forms spawn per ture 
 			elapseTime = 0.45f; // time beetween tures
-			gravityScale = 0.31f; // how fast the drops are dropping...
+			gravityScale = 0.26f; // how fast the drops are dropping...
+			addToSmoothTheRainDropDuration = 1.5f;
 		}
 	
 		// easy 3 rule, but inversly proportional
-		rainDropFinalDurationScaled = (RAIN_DROP_FINAL_EASY_DURATION * EASY_GRAVITY_SCALE) / gravityScale; // we need to scale this cuz if the gravity scale is higher the forms drop faster
+		rainDropFinalDurationScaled = (RAIN_DROP_FINAL_EASY_DURATION * EASY_GRAVITY_SCALE) / gravityScale + addToSmoothTheRainDropDuration; // we need to scale this cuz if the gravity scale is higher the forms drop faster
 		rainDropFinalDurationScaledWhileTimeDropActivated = (gravityScale * rainDropFinalDurationScaled) / (gravityScale - LOWER_GRAVITY_SCALE_RATE); 
 
 	}
