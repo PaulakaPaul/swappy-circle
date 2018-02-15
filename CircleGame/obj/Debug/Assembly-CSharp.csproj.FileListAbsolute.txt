@@ -30,9 +30,12 @@ D:\Projects\Unity\CircleGame\Temp\bin\Debug\UnityEngine.Analytics.xml
 D:\Projects\Unity\CircleGame\Temp\bin\Debug\UnityEngine.HoloLens.xml
 D:\Projects\Unity\CircleGame\obj\Debug\Assembly-CSharp.dll
 D:\Projects\Unity\CircleGame\obj\Debug\Assembly-CSharp.pdb
-D:\Projects\Unity\CircleGameRepository\swappy-circle\CircleGame\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 D:\Projects\Unity\CircleGameRepository\swappy-circle\CircleGame\Temp\bin\Debug\Assembly-CSharp.dll
 D:\Projects\Unity\CircleGameRepository\swappy-circle\CircleGame\Temp\bin\Debug\Assembly-CSharp.pdb
+D:\Projects\Unity\CircleGameRepository\swappy-circle\CircleGame\Temp\bin\Debug\Facebook.Unity.dll
+D:\Projects\Unity\CircleGameRepository\swappy-circle\CircleGame\Temp\bin\Debug\Facebook.Unity.Gameroom.dll
+D:\Projects\Unity\CircleGameRepository\swappy-circle\CircleGame\Temp\bin\Debug\Facebook.Unity.Settings.dll
+D:\Projects\Unity\CircleGameRepository\swappy-circle\CircleGame\Temp\bin\Debug\FacebookNamedPipeClient.dll
 D:\Projects\Unity\CircleGameRepository\swappy-circle\CircleGame\Temp\bin\Debug\nunit.framework.dll
 D:\Projects\Unity\CircleGameRepository\swappy-circle\CircleGame\Temp\bin\Debug\UnityEditor.dll
 D:\Projects\Unity\CircleGameRepository\swappy-circle\CircleGame\Temp\bin\Debug\UnityEngine.Analytics.dll
@@ -60,5 +63,6 @@ D:\Projects\Unity\CircleGameRepository\swappy-circle\CircleGame\Temp\bin\Debug\n
 D:\Projects\Unity\CircleGameRepository\swappy-circle\CircleGame\Temp\bin\Debug\UnityEngine.Timeline.xml
 D:\Projects\Unity\CircleGameRepository\swappy-circle\CircleGame\Temp\bin\Debug\UnityEngine.Analytics.xml
 D:\Projects\Unity\CircleGameRepository\swappy-circle\CircleGame\Temp\bin\Debug\UnityEngine.HoloLens.xml
+D:\Projects\Unity\CircleGameRepository\swappy-circle\CircleGame\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
 D:\Projects\Unity\CircleGameRepository\swappy-circle\CircleGame\obj\Debug\Assembly-CSharp.dll
 D:\Projects\Unity\CircleGameRepository\swappy-circle\CircleGame\obj\Debug\Assembly-CSharp.pdb
