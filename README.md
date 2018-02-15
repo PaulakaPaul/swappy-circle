@@ -11,8 +11,7 @@
   With the coins you can personalize your game, with new circles, drops and even passive buffs.
   You can choose three kind of levels: easy, medium, hard. So you can master the game in your own pace.
   
-
-     Hope you enjoyed it ! If there are any problems with the game please report them at p.e.iusztin.developer@gmail.com !
+    Hope you enjoyed it ! If there are any problems with the game please report them at p.e.iusztin.developer@gmail.com !
   
   Game made by Etheral
   Design made by Etheral
