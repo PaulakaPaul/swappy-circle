@@ -477,9 +477,9 @@ RectTransform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 95790896}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1, y: 1.1428562, z: 1}
   m_Children:
   - {fileID: 746196148}
   - {fileID: 2042961942}
@@ -488,7 +488,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 267, y: -61}
+  m_AnchoredPosition: {x: 272, y: -58.615845}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &104471333
@@ -915,7 +915,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   adsPanel: {fileID: 1193457059}
-  failedToLoadAdGameObject: {fileID: 1988231059}
 --- !u!1 &370224459
 GameObject:
   m_ObjectHideFlags: 0
@@ -1067,8 +1066,8 @@ RectTransform:
   m_Father: {fileID: 1380806910}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0.7938849}
-  m_AnchorMax: {x: 1, y: 0.9999965}
+  m_AnchorMin: {x: 0, y: 0.79388416}
+  m_AnchorMax: {x: 1, y: 0.9999969}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1444,8 +1443,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -231.7, y: -511.6}
-  m_SizeDelta: {x: 152.7, y: 167.20001}
+  m_AnchoredPosition: {x: -231.6, y: -511.6}
+  m_SizeDelta: {x: 183.9, y: 167.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &542266515
 MonoBehaviour:
@@ -1616,8 +1615,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 10.858318, y: -0.00018310547}
-  m_SizeDelta: {x: 301.14, y: 38.17}
+  m_AnchoredPosition: {x: -0.00099421, y: -0.00064945}
+  m_SizeDelta: {x: 377.7, y: 78.429}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &655706758
 MonoBehaviour:
@@ -1645,13 +1644,13 @@ MonoBehaviour:
     m_BestFit: 0
     m_MinSize: 2
     m_MaxSize: 40
-    m_Alignment: 0
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 'Couldn''t load ad! '
+  m_Text: 'To be implemented! '
 --- !u!222 &655706759
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -2080,8 +2079,8 @@ RectTransform:
   m_Father: {fileID: 1744271840}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.0000027162534, y: 0}
-  m_AnchorMax: {x: 0.9221464, y: 1}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0.9306164, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 20}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -2558,7 +2557,7 @@ Animator:
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 5e8913073074d1b47b32729934e32070, type: 2}
   m_CullingMode: 0
-  m_UpdateMode: 0
+  m_UpdateMode: 2
   m_ApplyRootMotion: 0
   m_LinearVelocityBlending: 0
   m_WarningMessage: 
@@ -2820,6 +2819,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   socialPanel: {fileID: 814564623}
+  todoLeaderboardPanel: {fileID: 1988231059}
   socialPanelAnim: {fileID: 814564625}
 --- !u!4 &926431366
 Transform:
@@ -3209,7 +3209,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1105575217}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 926431365}
+        m_MethodName: LeaderboardsListener
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &1105575217
@@ -4565,8 +4576,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 734909408}
   m_HandleRect: {fileID: 734909407}
   m_Direction: 0
-  m_Value: 0.000034887955
-  m_Size: 0.9221435
+  m_Value: 0
+  m_Size: 0.9306164
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -4856,8 +4867,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 21.6, y: 8.9}
+  m_SizeDelta: {x: 369.6, y: 362.6}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!95 &1623298356
 Animator:
@@ -5686,8 +5697,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 377176499}
   m_HandleRect: {fileID: 377176498}
   m_Direction: 2
-  m_Value: 0.9999963
-  m_Size: 0.2061122
+  m_Value: 0.99999607
+  m_Size: 0.20611274
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -5868,8 +5879,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 4.974701, y: 0.0026245117}
-  m_SizeDelta: {x: 245.6, y: 1213.9}
+  m_AnchoredPosition: {x: -0.6000061, y: -10}
+  m_SizeDelta: {x: 267.3, y: 1213.9}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1887093520
 MonoBehaviour:
@@ -5903,7 +5914,18 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 
+  m_Text: "Main rules: \n     - CATCH ( the forms)\n     - ROTATE (the circle)\n     -
+    SURVIVE ( lifes and heart)\n\n Score: \n    - cubes : 3 points\n    - stars :
+    5 points\n    - diamonds : 8 points\n\nNormal drops:\n    -the ones from above\nSpecial
+    drops:\n    -time drop: +5 time and makes slows the drops while\nit's active\n
+    \   -unified drop: you can catch the normal drops on all\nthe colors while it's
+    active\n    -rain drop: a rain of drops, you can't loose while this\nit's active
+    \n     Special drops does not give extra score ! They can\nonly help you make
+    combos for extra score !\n\nCombos (catching multiple forms without \\nmaking
+    a mistake):\n    - x2  from 5 to 8 elements\n    - x3 from 9 to how make you can
+    handle it\n\n    You can also personalize your game as you want from the shop
+    with new circles, drops and buffs.   \n\n    Hope that this description helped
+    you ! \n    For more information or bugs please mail me anytime at p.e.iusztin.gmail@gmail.com."
 --- !u!222 &1887093521
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -5921,7 +5943,7 @@ GameObject:
   - component: {fileID: 1988231062}
   - component: {fileID: 1988231061}
   m_Layer: 0
-  m_Name: NotLoadPanel
+  m_Name: ToBeImplementedPanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5941,10 +5963,10 @@ RectTransform:
   m_Father: {fileID: 721301002}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 1, y: 87}
-  m_SizeDelta: {x: -213.8, y: -831.7}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 4, y: 79.2}
+  m_SizeDelta: {x: 377, y: 78}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1988231061
 MonoBehaviour:
@@ -5958,7 +5980,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 0.392}
+  m_Color: {r: 0.42647058, g: 0.42647058, b: 0.42647058, a: 0.853}
   m_RaycastTarget: 1
   m_OnCullStateChanged:
     m_PersistentCalls:

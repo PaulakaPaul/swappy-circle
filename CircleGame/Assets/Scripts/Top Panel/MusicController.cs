@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
-public class MusicController : MonoBehaviour {
+public class MusicController : MonoBehaviour { // in the Top Panel object
 
 	public static MusicController instance;
 
@@ -15,11 +15,12 @@ public class MusicController : MonoBehaviour {
 	[SerializeField]
 	private Sprite musicOn, musicOff;
 
-
 	private Button musicButton;
 
 	// clips ( public to be played from everywhere in the game)
 	public AudioClip catchFormClip;
+
+	public float VolumeAudioClips { get ; set ; } // var with which we will control the volume from all the game clips ( range from 0 to 1 as the bgAudioSource range and volumeSlider range)
 
 
 	// Use this for initialization
@@ -30,7 +31,9 @@ public class MusicController : MonoBehaviour {
 	
 
 	void Start () {
+		// initialize game volume
 		ChangeBackgroundVolume(GamePreferences.getMusicState ());
+		VolumeAudioClips = GamePreferences.getMusicState ();
 	}
 
 	void OnEnable() {
@@ -75,12 +78,14 @@ public class MusicController : MonoBehaviour {
 			GamePreferences.SetMusicState (0f);
 			// setup the audiosource
 			bgAudioSource.volume = 0f;
+			VolumeAudioClips = 0f;
 		} else if (!bgAudioSource.isPlaying) {
 			bgAudioSource.Play ();
 			// saving
 			GamePreferences.SetMusicState (GamePreferences.getLastMusicState());
 			// setup the audiosource
 			bgAudioSource.volume = GamePreferences.getLastMusicState();
+			VolumeAudioClips = GamePreferences.getLastMusicState ();
 		}
 		
 		SetupMusicButtonSprite ();
@@ -91,10 +96,12 @@ public class MusicController : MonoBehaviour {
 
 		//change the volume
 		bgAudioSource.volume = volume;
+		// give the same volume to the audio clips
+		VolumeAudioClips = volume;
 		// save the data
 		GamePreferences.SetMusicState (volume);
 
-		// playing or stopping the clip for efficiency
+		// playing or stopping the clip for efficiency and OnOffBackgroundMusicListener logic
 		if (volume > 0) {
 			if (!bgAudioSource.isPlaying) 
 				bgAudioSource.Play ();

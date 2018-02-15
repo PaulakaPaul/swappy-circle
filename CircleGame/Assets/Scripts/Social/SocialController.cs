@@ -7,7 +7,7 @@ using Facebook.Unity;
 public class SocialController : MonoBehaviour {
 
 	[SerializeField]
-	private GameObject socialPanel;
+	private GameObject socialPanel, todoLeaderboardPanel;
 	[SerializeField]
 	private Animator socialPanelAnim;
 
@@ -66,7 +66,7 @@ public class SocialController : MonoBehaviour {
 
 	}
 
-	//fb button listner
+	//fb button listener
 	public void ShareFBListener() {
 
 
@@ -84,6 +84,12 @@ public class SocialController : MonoBehaviour {
 		// the contentTitle and contentDescription are not working, sdk broken
 	}
 
+	//leaderboards button listener
+	public void LeaderboardsListener() {
+		//TODO implement leaderboards...
+		StartCoroutine ("ShowFailedToLoadAdText");
+	}
+
 	// useful for debugging
 	private void ShareCallback (IShareResult result) {
 		if (result.Cancelled || !String.IsNullOrEmpty(result.Error)) {
@@ -99,16 +105,16 @@ public class SocialController : MonoBehaviour {
 
 	//main button listener -> opens/closes the panel
 	public void SocialButtonClickListener() {
-		if (!isSocialButtonClicked) {
-			socialPanel.SetActive (true);
-			isSocialButtonClicked = true;
-		} else {
-			StartCoroutine ("closeSocialPanel");
+		if (!AdManager.instance.AdOpened && SettingsController.instance.IsSettingsMenuClosed) { // continue if no ads are opened
+			if (!isSocialButtonClicked) {
+				socialPanel.SetActive (true);
+				isSocialButtonClicked = true;
+			} else {
+				StartCoroutine ("closeSocialPanel");
+			}
 		}
-
 	}
-
-
+		
 	// enumerator for slide out anim
 	private IEnumerator closeSocialPanel() {
 		socialPanelAnim.Play ("SlideOutSocialPanel");
@@ -116,4 +122,10 @@ public class SocialController : MonoBehaviour {
 		socialPanel.SetActive (false);
 		isSocialButtonClicked = false;
 	}
+
+	private IEnumerator ShowFailedToLoadAdText() {
+		todoLeaderboardPanel.SetActive (true);
+		yield return new WaitForSeconds (1f);
+		todoLeaderboardPanel.SetActive (false);
+	} 
 }

@@ -96,7 +96,7 @@ ff05dcdf90651c3d98a9cad3df5e471e UnityEngine.Timeline.dll:UnityEngine.Timeline.C
 7b848b7feaa524953d09fc1851efa6da UnityEngine.Timeline.dll:UnityEngine.Timeline.PlayableTrack
 c24a21b131bfa67be1162db2cba4b52b UnityEngine.Timeline.dll:UnityEngine.Timeline.TimelineAsset
 dd5481137759597d614818793c90a7fe Assembly-CSharp.dll:.moveBackGround
-b968f86a2bde24c07efbd293163866e4 Assembly-CSharp.dll:.AdManager
+1822c6be32ebaf4ec71a3615a212acee Assembly-CSharp.dll:.AdManager
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.menuUIManager
 fc1e0f4d8439d9928083474691511a13 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 05524b8f659e7bfe5756d1335fec24ba UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
@@ -118,7 +118,7 @@ bc68edb0af574bf79f9550ead8ebae5c UnityEngine.HoloLens.dll:UnityEngine.Audio.Audi
 c2275a8bfbb9f9942cad75ecdfded41d UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingCollider
 45f3431f0103c41611e8d4eec3d439df UnityEngine.HoloLens.dll:UnityEngine.VR.WSA.SpatialMappingRenderer
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.Timer
-8c36dc96129fff2bbe36ff2be4795256 Assembly-CSharp.dll:.SocialController
+6c649a77ce3d540d981b70a6e73ed572 Assembly-CSharp.dll:.SocialController
 05524b8f659e7bfe5756d1335fec24ba Assembly-CSharp.dll:.SpecialDropSlider
 05524b8f659e7bfe5756d1335fec24ba Facebook.Unity.dll:Facebook.Unity.Mobile.Android.AndroidFacebookGameObject
 05524b8f659e7bfe5756d1335fec24ba Facebook.Unity.dll:Facebook.Unity.Mobile.Android.AndroidFacebookLoader

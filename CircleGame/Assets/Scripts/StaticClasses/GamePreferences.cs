@@ -20,7 +20,7 @@ public static class GamePreferences {
 	public static string CoinScore = "CoinScore";
 
 	public const string AdsCounter = "AdsCounter";
-	public const int AD_NUMBER_SHOW = 2; //TODO change to 3
+	public const int AD_NUMBER_SHOW = 3; 
 	public static string MusicVolume = "MusicVolume";
 	public const string LastMusicVolume = "LastMusicVolume"; // we use this to restore the music when we use the on off button from the gameplay
 	public const string ShowTrail = "ShowTrail";

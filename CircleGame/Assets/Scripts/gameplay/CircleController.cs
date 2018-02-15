@@ -23,7 +23,7 @@ public class CircleController : MonoBehaviour {
 	// extremes of the screen
 
 	private static int comboCounter;
-
+	private float moveDownCircleAfterLooseLife;
 
 	void Awake() {
 
@@ -34,7 +34,16 @@ public class CircleController : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-		//currentCircle.transform.position = circlePosition;
+
+		if (GamePreferences.GetEasyDifficultyState () == 1) {
+			moveDownCircleAfterLooseLife = 0f;
+		} else if (GamePreferences.GetMediumDifficultyState () == 1) {
+			moveDownCircleAfterLooseLife = 0.9f;
+		} else if (GamePreferences.GetHardDifficultyState () == 1) {
+			moveDownCircleAfterLooseLife = 1.425f;
+		}
+
+		MoveDownCircle ();
 
 		screenWidthReference = Screen.width / 2;
 		minVerticalHeightReference = Screen.height * 0.1f;
@@ -152,6 +161,23 @@ public class CircleController : MonoBehaviour {
 			UIManager.instance. SetActivatePointer (false); // deactive the ui pointer when the game starts
 		}
 
+	}
+
+	private void MoveDownCircle() {
+		// move down the circle after losing a life
+		Vector3 circlePosition = currentCircle.transform.position;
+
+		/*switch (GameManager.instance.Lifes) {
+		case 1:
+			currentCircle.transform.position = new Vector3 (circlePosition.x, circlePosition.y - 2 * moveDownCircleAfterLooseLife, circlePosition.z);
+			break;
+		case 2:
+			currentCircle.transform.position = new Vector3 (circlePosition.x, circlePosition.y - moveDownCircleAfterLooseLife, circlePosition.z);
+			break;
+		} */ 
+
+		currentCircle.transform.position = new Vector3 (circlePosition.x, circlePosition.y - (3 - GameManager.instance.Lifes) * moveDownCircleAfterLooseLife, circlePosition.z);
+		// when you lose a life , the circle goes down
 	}
 
 	public static MiddleStates getCurrentMiddleState() {
