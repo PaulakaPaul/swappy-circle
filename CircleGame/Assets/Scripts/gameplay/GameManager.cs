@@ -65,7 +65,8 @@ public class GameManager : MonoBehaviour {
 				lifes = 3;
 				timer = 120f;
 
-				GamePreferences.IncrementAdsCounter (); // everytime we start a new game the ads counter it's incremented by one
+				if (AdManager.instance.areAllAdsLoaded ())  // continue ad logic only if all the ads are loaded
+					GamePreferences.IncrementAdsCounter (); // everytime we start a new game the ads counter it's incremented by one
 
 				//seding data to game controllers
 				ScoreManager.instance.takeDataFromGameManager (score, lifes);
@@ -86,8 +87,7 @@ public class GameManager : MonoBehaviour {
 			if(GamePreferences.ShouldShowAd()) // it  verifies if we reached GamePreferences.ADD_NUMBER_SHOW to show ad
 				AdManager.instance.ShowUIAd ();
 		}
-
-
+			
 		AdManager.instance.RequestAllAds (); // request ads everytime we load a new scene 
 	}
 
